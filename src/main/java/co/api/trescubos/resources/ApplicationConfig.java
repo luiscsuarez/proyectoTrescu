@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.api.trescubos.resources;
 
 import java.util.HashSet;
@@ -25,6 +20,6 @@ public class ApplicationConfig extends Application{
     }
     
     private void addRestResourceClasses(Set<Class<?>> resources){
-        resources.add(co.api.trescubos.resources.ProductoResource.class);
+        resources.add(co.api.trescubos.resources.CountryResource.class);
     }
 }
