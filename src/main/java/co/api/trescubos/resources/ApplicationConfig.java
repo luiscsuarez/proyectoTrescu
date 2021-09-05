@@ -24,8 +24,7 @@ public class ApplicationConfig extends Application{
         resources.add(co.api.trescubos.resources.CountryResource.class);
         resources.add(co.api.trescubos.resources.CurrencyResource.class);
         resources.add(co.api.trescubos.resources.EnterpriseResource.class);
-        
-        //Resources y excepciones
+        resources.add(co.api.trescubos.resources.EnterpriseUserResource.class);
         resources.add(org.eclipse.persistence.jpa.rs.resources.EntityResource.class);
         resources.add(org.eclipse.persistence.jpa.rs.resources.PersistenceResource.class);
         resources.add(org.eclipse.persistence.jpa.rs.resources.PersistenceUnitResource.class);

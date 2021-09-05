@@ -30,7 +30,7 @@ public class CurrencyEntity implements Serializable {
     @Column(name = "currency_code", nullable = false)
     private String currencyCode;
     
-    @JoinColumn(name = "country_id")
+    @JoinColumn(name = "country_id", nullable = false)
     @ManyToOne
     private CountryEntity countryId;
     

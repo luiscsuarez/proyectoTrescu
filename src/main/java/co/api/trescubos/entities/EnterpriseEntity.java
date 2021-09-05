@@ -1,7 +1,7 @@
 package co.api.trescubos.entities;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  * Clase encargada de crear la entidad
@@ -31,7 +32,7 @@ public class EnterpriseEntity implements Serializable {
     @Column(name = "identification_number", nullable = false)
     private String identificationNumber;
     
-    @JoinColumn(name = "currency_id")
+    @JoinColumn(name = "currency_id", nullable = false)
     @ManyToOne
     private CurrencyEntity currencyId;
     
@@ -50,15 +51,17 @@ public class EnterpriseEntity implements Serializable {
     @Column(name = "city", nullable = false)
     private String city;
     
-    @JoinColumn(name = "country_id")
+    @JoinColumn(name = "country_id", nullable = false)
     @ManyToOne
     private CountryEntity countryId;
     
     @Column(name = "date_created", nullable = false)
-    private LocalDateTime dateCreated;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dateCreated;
     
     @Column(name = "date_updated", nullable = false)
-    private LocalDateTime dateUpdated;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dateUpdated;
     
     /**
      * Constructor
@@ -66,7 +69,7 @@ public class EnterpriseEntity implements Serializable {
     public EnterpriseEntity() {
     }
 
-    public EnterpriseEntity(Long id, String identificationType, String identificationNumber, CurrencyEntity currencyId, String businessName, String tradeName, String phone, String address, String city, CountryEntity countryId, LocalDateTime dateCreated, LocalDateTime dateUpdated) {
+    public EnterpriseEntity(Long id, String identificationType, String identificationNumber, CurrencyEntity currencyId, String businessName, String tradeName, String phone, String address, String city, CountryEntity countryId, Date dateCreated, Date dateUpdated) {
         this.id = id;
         this.identificationType = identificationType;
         this.identificationNumber = identificationNumber;
@@ -161,22 +164,20 @@ public class EnterpriseEntity implements Serializable {
         this.countryId = countryId;
     }
 
-    public LocalDateTime getDateCreated() {
+    public Date getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(LocalDateTime dateCreated) {
+    public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public LocalDateTime getDateUpdated() {
+    public Date getDateUpdated() {
         return dateUpdated;
     }
 
-    public void setDateUpdated(LocalDateTime dateUpdated) {
+    public void setDateUpdated(Date dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
 
-    
-    
 }

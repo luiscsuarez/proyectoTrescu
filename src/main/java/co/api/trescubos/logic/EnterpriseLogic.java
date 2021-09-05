@@ -2,6 +2,8 @@ package co.api.trescubos.logic;
 
 import co.api.trescubos.entities.EnterpriseEntity;
 import co.api.trescubos.persistence.EnterprisePersistence;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -47,6 +49,8 @@ public class EnterpriseLogic {
      * @return 
      */
     public EnterpriseEntity crearEnterprise(EnterpriseEntity enterpriseCrear){
+        enterpriseCrear.setDateCreated(Date.from(Instant.now()));
+        enterpriseCrear.setDateUpdated(Date.from(Instant.now()));
         persistence.create(enterpriseCrear);
         return enterpriseCrear;
     }
@@ -58,6 +62,7 @@ public class EnterpriseLogic {
      * @return enterprise actualizado
      */
     public EnterpriseEntity actualizarEnterprise (Long id, EnterpriseEntity EnterpriseAcualizar){
+        EnterpriseAcualizar.setDateUpdated(Date.from(Instant.now()));
         EnterpriseEntity enterpriseUpdate = persistence.update(EnterpriseAcualizar);
         return enterpriseUpdate;
     }

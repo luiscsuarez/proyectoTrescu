@@ -3,8 +3,8 @@ package co.api.trescubos.dto;
 import co.api.trescubos.entities.CountryEntity;
 import co.api.trescubos.entities.CurrencyEntity;
 import co.api.trescubos.entities.EnterpriseEntity;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,8 +23,8 @@ public class EnterpriseDTO {
     private String address;
     private String city;
     private CountryEntity countryId;
-    private LocalDateTime dateCreated;
-    private LocalDateTime dateUpdated;
+    private Date dateCreated;
+    private Date dateUpdated;
     
     public EnterpriseDTO() {
     }
@@ -153,19 +153,19 @@ public class EnterpriseDTO {
         this.countryId = countryId;
     }
 
-    public LocalDateTime getDateCreated() {
+    public Date getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(LocalDateTime dateCreated) {
+    public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public LocalDateTime getDateUpdated() {
+    public Date getDateUpdated() {
         return dateUpdated;
     }
 
-    public void setDateUpdated(LocalDateTime dateUpdated) {
+    public void setDateUpdated(Date dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
             
