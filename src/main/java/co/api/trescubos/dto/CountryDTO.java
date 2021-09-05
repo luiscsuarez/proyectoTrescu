@@ -19,12 +19,12 @@ public class CountryDTO {
     
     /**
      * Transformacion entidad - objeto
-     * @param productoEntity 
+     * @param countryEntity 
      */
-    public CountryDTO(CountryEntity productoEntity) {
-        this.id = productoEntity.getId();
-        this.countryName = productoEntity.getCountryName();
-        this.countryCode = productoEntity.getCountryCode();
+    public CountryDTO(CountryEntity countryEntity) {
+        this.id = countryEntity.getId();
+        this.countryName = countryEntity.getCountryName();
+        this.countryCode = countryEntity.getCountryCode();
     }
     
     /**
@@ -41,15 +41,15 @@ public class CountryDTO {
     
     /**
      * Conversión masiva de objeto a entidad
-     * @param listaProductos
+     * @param listaCountries
      * @return 
      */
-    public static List<CountryDTO> toCountryList(List<CountryEntity> listaProductos){
-        List<CountryDTO> listaProductosDTO = new ArrayList<>();
-        for(CountryEntity entity : listaProductos){
-            listaProductosDTO.add(new CountryDTO(entity));
+    public static List<CountryDTO> toCountryList(List<CountryEntity> listaCountries){
+        List<CountryDTO> listaCountriesDTO = new ArrayList<>();
+        for(CountryEntity entity : listaCountries){
+            listaCountriesDTO.add(new CountryDTO(entity));
         }
-        return listaProductosDTO;
+        return listaCountriesDTO;
     }
         
     public Long getId() {

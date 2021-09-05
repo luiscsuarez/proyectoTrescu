@@ -1,6 +1,6 @@
 package co.api.trescubos.persistence;
 
-import co.api.trescubos.entities.CountryEntity;
+import co.api.trescubos.entities.CurrencyEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,7 +12,7 @@ import javax.persistence.Query;
  * @author Luis Suarez
  */ 
 @Stateless
-public class CountryPersistence {
+public class CurrencyPersistence {
     
     /**
      * Instancia del entity manager
@@ -24,9 +24,9 @@ public class CountryPersistence {
      * Metodo que trae todos los datos que se encuentran en la tabla
      * @return lista resultante
      */
-    public List<CountryEntity> findAll(){
-        Query queryCountry = entityManager.createQuery("select p from countries p");
-        return queryCountry.getResultList();
+    public List<CurrencyEntity> findAll(){
+        Query queryCurrency = entityManager.createQuery("select p from currencies p");
+        return queryCurrency.getResultList();
     }
     
     /**
@@ -34,27 +34,27 @@ public class CountryPersistence {
      * @param id
      * @return objeto encontrado
      */
-    public CountryEntity find(Long id){
-        return entityManager.find(CountryEntity.class, id);
+    public CurrencyEntity find(Long id){
+        return entityManager.find(CurrencyEntity.class, id);
     }
     
     /**
      * Metodo para crear un objeto de la entidad 
-     * @param CountryNew
+     * @param CurrencyNew
      * @return Nuevo
      */
-    public CountryEntity create(CountryEntity CountryNew){
-        entityManager.persist(CountryNew);
-        return CountryNew;
+    public CurrencyEntity create(CurrencyEntity CurrencyNew){
+        entityManager.persist(CurrencyNew);
+        return CurrencyNew;
     }
     
     /**
      * Metodo para actualizar un dato de la entidad
-     * @param countryUpdated
+     * @param currencyUpdated
      * @return actualizado
      */
-    public CountryEntity update(CountryEntity countryUpdated){
-        return entityManager.merge(countryUpdated);
+    public CurrencyEntity update(CurrencyEntity currencyUpdated){
+        return entityManager.merge(currencyUpdated);
     }
     
     /**
@@ -62,7 +62,7 @@ public class CountryPersistence {
      * @param id 
      */
     public void remove(Long id){
-        CountryEntity CountryDelet = entityManager.find(CountryEntity.class, id);
-        entityManager.remove(CountryDelet);
+        CurrencyEntity CurrencyDelet = entityManager.find(CurrencyEntity.class, id);
+        entityManager.remove(CurrencyDelet);
     }
 }

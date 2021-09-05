@@ -31,14 +31,14 @@ public class CountryLogic {
     /**
      * Obtener por su id
      * @param id
-     * @return productoEntity
+     * @return countryEntity
      */
     public CountryEntity obtenerCountry(Long id){
-        CountryEntity producto = persistence.find(id);
-        if(producto == null){
+        CountryEntity country = persistence.find(id);
+        if(country == null){
             throw new IllegalArgumentException("No existe en la base de datos");
         }
-        return producto;
+        return country;
     }
     
     /**
@@ -55,7 +55,7 @@ public class CountryLogic {
      * Metodo que conecta la logica con la transaccion para actualizar
      * @param id
      * @param CountryAcualizar
-     * @return producto actualizado
+     * @return country actualizado
      */
     public CountryEntity actualizarCountry (Long id, CountryEntity CountryAcualizar){
         CountryEntity countryUpdate = persistence.update(CountryAcualizar);
