@@ -20,12 +20,13 @@ public class ApplicationConfig extends Application{
     }
     
     private void addRestResourceClasses(Set<Class<?>> resources){
-        //Clases de recursos api
+        //===========Clases de recursos api===========
         resources.add(co.api.trescubos.resources.CountryResource.class);
         resources.add(co.api.trescubos.resources.CurrencyResource.class);
         resources.add(co.api.trescubos.resources.EnterpriseResource.class);
         resources.add(co.api.trescubos.resources.EnterpriseUserResource.class);
         resources.add(co.api.trescubos.resources.TransactionResource.class);
+        //============================================
         resources.add(org.eclipse.persistence.jpa.rs.resources.EntityResource.class);
         resources.add(org.eclipse.persistence.jpa.rs.resources.PersistenceResource.class);
         resources.add(org.eclipse.persistence.jpa.rs.resources.PersistenceUnitResource.class);
