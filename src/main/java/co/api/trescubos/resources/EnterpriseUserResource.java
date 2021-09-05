@@ -53,6 +53,13 @@ public class EnterpriseUserResource {
         return new EnterpriseUserDTO(enterpriseUser);
     }
     
+    @GET
+    @Path("{email}/{password}")
+    public List<EnterpriseUserDTO> validate(@PathParam("email") String email, @PathParam("password") String password){
+        List <EnterpriseUserEntity> enterpriseUsers = enterpriseUsersLogic.validate(email, password);
+        return EnterpriseUserDTO.toEnterpriseUserList(enterpriseUsers);
+    }
+    
     @POST
     public EnterpriseUserDTO createEnterpriseUser(EnterpriseUserDTO enterpriseUserDTO){
         return new EnterpriseUserDTO(enterpriseUsersLogic.crearEnterpriseUser(enterpriseUserDTO.toEntity()));

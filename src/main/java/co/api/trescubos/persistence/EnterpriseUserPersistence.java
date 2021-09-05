@@ -29,6 +29,13 @@ public class EnterpriseUserPersistence {
         return queryEnterpriseUser.getResultList();
     }
     
+    public List<EnterpriseUserEntity> validate(String email, String password){
+        Query queryEnterpriseUser = entityManager.createQuery("select p from enterprise_users p where p.email = :email and p.password = :password")
+                .setParameter("email", email)
+                .setParameter("password", password);
+        return queryEnterpriseUser.getResultList();
+    }
+    
     /**
      * Metodo que busca un objeto mediante su id
      * @param id

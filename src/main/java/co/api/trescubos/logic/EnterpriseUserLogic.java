@@ -30,6 +30,11 @@ public class EnterpriseUserLogic {
         return enterpriseUsers;
     }
     
+    public List<EnterpriseUserEntity> validate(String email, String password){
+        List<EnterpriseUserEntity> enterpriseUsers = persistence.validate(email, password);
+        return enterpriseUsers;
+    }
+    
     /**
      * Obtener por su id
      * @param id
