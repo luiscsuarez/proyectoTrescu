@@ -1,15 +1,20 @@
 package co.api.trescubos.resources;
 
 import java.io.IOException;
+import javax.annotation.Priority;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
@@ -19,7 +24,8 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 @PreMatching
-public class Intercepter implements ContainerRequestFilter {
+@Priority(Priorities.HEADER_DECORATOR)
+public class Intercepter implements ContainerRequestFilter, ContainerResponseFilter {
 
     @PersistenceContext(unitName = "TrescubosPU")
     private EntityManager entityManager;
@@ -28,6 +34,10 @@ public class Intercepter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext request) throws IOException {
         String url = request.getUriInfo().getAbsolutePath().toString();
         if (url.contains("api/auth")) {
+            return;
+        }
+        
+        if (request.getMethod().equals("OPTIONS")){
             return;
         }
 
@@ -61,11 +71,33 @@ public class Intercepter implements ContainerRequestFilter {
         Query queryEnterpriseUser = entityManager.createQuery("select p from enterprise_users p where p.email = :email and p.password = :password")
                 .setParameter("email", email)
                 .setParameter("password", password);
-        if (queryEnterpriseUser.getResultList() == null) {
+        if (queryEnterpriseUser.getResultList().isEmpty()) {
             JsonObject json = Json.createObjectBuilder().add("Mensaje", "Usuario no autorizado, acceso denegado").build();
             request.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity(json).type(MediaType.APPLICATION_JSON).build());
             return;
         }
+    }
+
+    /**
+     * Method for ContainerResponseFilter.
+     *
+     * @param request
+     * @param response
+     * @throws java.io.IOException
+     */
+    @Override
+    public void filter(ContainerRequestContext request, ContainerResponseContext response)
+            throws IOException {
+        
+        final MultivaluedMap<String,Object> headers = response.getHeaders();
+
+        headers.add("Access-Control-Allow-Origin", "*");
+        headers.add("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type");
+        headers.add("Access-Control-Expose-Headers", "Location, Content-Disposition");
+        headers.add("Access-Control-Allow-Methods", "POST, PUT, GET, DELETE, HEAD, OPTIONS");
+        
+//                "CSRF-Token, X-Requested-By, Authorization, Content-Type, accept, origin");
+        
     }
 
 }
