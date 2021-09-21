@@ -21,6 +21,9 @@ public class ApplicationConfig extends Application{
     
     private void addRestResourceClasses(Set<Class<?>> resources){
         //===========Clases de recursos api===========
+        resources.add(co.api.trescubos.resources.BrandCategoryResource.class);
+        resources.add(co.api.trescubos.resources.BrandResource.class);
+        resources.add(co.api.trescubos.resources.CategoryResource.class);
         resources.add(co.api.trescubos.resources.CountryResource.class);
         resources.add(co.api.trescubos.resources.CurrencyResource.class);
         resources.add(co.api.trescubos.resources.EnterpriseResource.class);
