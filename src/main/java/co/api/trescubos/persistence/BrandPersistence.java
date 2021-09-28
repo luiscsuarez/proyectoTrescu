@@ -27,7 +27,7 @@ public class BrandPersistence {
      * @return lista resultante
      */
     public List<BrandEntity> findAll() {
-        Query queryBrand = entityManager.createQuery("select p from brands p");
+        Query queryBrand = entityManager.createQuery("select p from brands p where p.enabled = true");
         return queryBrand.getResultList();
     }
 

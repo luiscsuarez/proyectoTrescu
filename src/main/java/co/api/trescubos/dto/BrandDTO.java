@@ -17,6 +17,7 @@ public class BrandDTO {
     private Date dateCreated;
     private Date dateUpdated;
     private String iconUrl;
+    private String description;
     private String flagType;
     private String values;
     
@@ -35,6 +36,7 @@ public class BrandDTO {
         this.dateCreated = brandEntity.getDateCreated();
         this.dateUpdated = brandEntity.getDateUpdated();
         this.iconUrl = brandEntity.getIconUrl();
+        this.description = brandEntity.getDescription();
         this.flagType = brandEntity.getFlagType();
         this.values = brandEntity.getValues();
     }
@@ -51,6 +53,7 @@ public class BrandDTO {
         entity.setDateCreated(this.dateCreated);
         entity.setDateUpdated(this.dateUpdated);
         entity.setIconUrl(this.iconUrl);
+        entity.setDescription(this.description);
         entity.setFlagType(this.flagType);
         entity.setValues(this.values);
         return entity;
@@ -131,6 +134,14 @@ public class BrandDTO {
 
     public void setValues(String values) {
         this.values = values;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     

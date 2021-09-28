@@ -1,6 +1,6 @@
 package co.api.trescubos.persistence;
 
-import co.api.trescubos.entities.CategoryEntity;
+import co.api.trescubos.entities.ReceiverEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,7 +12,7 @@ import javax.persistence.Query;
  * @author Luis Suarez
  */ 
 @Stateless
-public class CategoryPersistence {
+public class ReceiverPersistence {
     
     /**
      * Instancia del entity manager
@@ -24,9 +24,9 @@ public class CategoryPersistence {
      * Metodo que trae todos los datos que se encuentran en la tabla
      * @return lista resultante
      */
-    public List<CategoryEntity> findAll(){
-        Query queryCategory = entityManager.createQuery("select p from categories p where p.enabled = true");
-        return queryCategory.getResultList();
+    public List<ReceiverEntity> findAll(){
+        Query queryReceiver = entityManager.createQuery("select p from receivers p");
+        return queryReceiver.getResultList();
     }
     
     /**
@@ -34,27 +34,27 @@ public class CategoryPersistence {
      * @param id
      * @return objeto encontrado
      */
-    public CategoryEntity find(Long id){
-        return entityManager.find(CategoryEntity.class, id);
+    public ReceiverEntity find(Long id){
+        return entityManager.find(ReceiverEntity.class, id);
     }
     
     /**
      * Metodo para crear un objeto de la entidad 
-     * @param CategoryNew
+     * @param ReceiverNew
      * @return Nuevo
      */
-    public CategoryEntity create(CategoryEntity CategoryNew){
-        entityManager.persist(CategoryNew);
-        return CategoryNew;
+    public ReceiverEntity create(ReceiverEntity ReceiverNew){
+        entityManager.persist(ReceiverNew);
+        return ReceiverNew;
     }
     
     /**
      * Metodo para actualizar un dato de la entidad
-     * @param categoryUpdated
+     * @param receiverUpdated
      * @return actualizado
      */
-    public CategoryEntity update(CategoryEntity categoryUpdated){
-        return entityManager.merge(categoryUpdated);
+    public ReceiverEntity update(ReceiverEntity receiverUpdated){
+        return entityManager.merge(receiverUpdated);
     }
     
     /**
@@ -62,7 +62,7 @@ public class CategoryPersistence {
      * @param id 
      */
     public void remove(Long id){
-        CategoryEntity CategoryDelet = entityManager.find(CategoryEntity.class, id);
-        entityManager.remove(CategoryDelet);
+        ReceiverEntity ReceiverDelet = entityManager.find(ReceiverEntity.class, id);
+        entityManager.remove(ReceiverDelet);
     }
 }

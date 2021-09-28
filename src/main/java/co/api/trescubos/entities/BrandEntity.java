@@ -40,6 +40,9 @@ public class BrandEntity implements Serializable {
 
     @Column(name = "icon_url", nullable = false)
     private String iconUrl;
+    
+    @Column(name = "description", nullable = false)
+    private String description;
 
     @Column(name = "flag_type", nullable = false)
     private String flagType;
@@ -50,13 +53,14 @@ public class BrandEntity implements Serializable {
      public BrandEntity() {
     }
 
-    public BrandEntity(Long id, String categoryName, Boolean enabled, Date dateCreated, Date dateUpdated, String iconUrl, String flagType, String values) {
+    public BrandEntity(Long id, String categoryName, Boolean enabled, Date dateCreated, Date dateUpdated, String iconUrl, String flagType, String values, String description) {
         this.id = id;
         this.brandName = categoryName;
         this.enabled = enabled;
         this.dateCreated = dateCreated;
         this.dateUpdated = dateUpdated;
         this.iconUrl = iconUrl;
+        this.description = description;
         this.flagType = flagType;
         this.values = values;
     }
@@ -127,6 +131,14 @@ public class BrandEntity implements Serializable {
 
     public void setValues(String values) {
         this.values = values;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
    
