@@ -28,6 +28,17 @@ public class BrandCategoryLogic {
         return brandCategories;
     }
     
+    
+    /**
+     * Obtener todos los objetos
+     * @param category
+     * @return 
+     */
+    public List<BrandCategoryEntity> obtenerEspecificBrandCategories(Long category){
+        List<BrandCategoryEntity> brandCategories = persistence.findEspecific(category);
+        return brandCategories;
+    }
+    
     /**
      * Obtener por su id
      * @param id

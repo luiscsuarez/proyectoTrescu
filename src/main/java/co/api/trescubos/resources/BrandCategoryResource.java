@@ -38,6 +38,19 @@ public class BrandCategoryResource {
         return BrandCategoryDTO.toBrandCategoryList(brandCategories);
     }
     
+    
+    /**
+     * Metodo que obtiene todos los datos 
+     * @param category
+     * @return Lista 
+     */
+    @GET
+    @Path("is/{category}")
+    public List<BrandCategoryDTO> getEspecificBrandCategoryList(@PathParam("category") Long category){
+        List <BrandCategoryEntity> brandCategories = brandCategoriesLogic.obtenerEspecificBrandCategories(category);
+        return BrandCategoryDTO.toBrandCategoryList(brandCategories);
+    }
+    
     /**
      * Obtener por su id
      * @param id

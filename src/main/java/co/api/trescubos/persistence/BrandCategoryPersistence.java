@@ -1,6 +1,7 @@
 package co.api.trescubos.persistence;
 
 import co.api.trescubos.entities.BrandCategoryEntity;
+import co.api.trescubos.entities.CategoryEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,6 +27,18 @@ public class BrandCategoryPersistence {
      */
     public List<BrandCategoryEntity> findAll(){
         Query queryBrandCategory = entityManager.createQuery("select p from brand_categories p");
+        return queryBrandCategory.getResultList();
+    }
+    
+    /**
+     * Metodo que trae todos los datos que se encuentran en la tabla
+     * @param category
+     * @return lista resultante
+     */
+    public List<BrandCategoryEntity> findEspecific(Long category){
+        CategoryEntity key = entityManager.find(CategoryEntity.class, category);
+        Query queryBrandCategory = entityManager.createQuery("select p from brand_categories p where p.categoryId = :categoryId")
+                .setParameter("categoryId", key);
         return queryBrandCategory.getResultList();
     }
     
