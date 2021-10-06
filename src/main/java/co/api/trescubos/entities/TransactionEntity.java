@@ -26,7 +26,7 @@ public class TransactionEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     @ManyToOne
     private EnterpriseUserEntity userId;
 
@@ -56,11 +56,15 @@ public class TransactionEntity implements Serializable {
 
     @Column(name = "type", nullable = false)
     private String type;
+    
+    @JoinColumn(name = "receiver_id")
+    @ManyToOne
+    private ReceiverEntity receiverId;
 
     public TransactionEntity() {
     }
 
-    public TransactionEntity(Long id, EnterpriseUserEntity userId, Date dateCreated, Date dateUpdated, String description, Double amount, CurrencyEntity currencyId, Double previousBalance, Double newBalance, String type) {
+    public TransactionEntity(Long id, EnterpriseUserEntity userId, Date dateCreated, Date dateUpdated, String description, Double amount, CurrencyEntity currencyId, Double previousBalance, Double newBalance, String type, ReceiverEntity receiverId) {
         this.id = id;
         this.userId = userId;
         this.dateCreated = dateCreated;
@@ -71,6 +75,7 @@ public class TransactionEntity implements Serializable {
         this.previousBalance = previousBalance;
         this.newBalance = newBalance;
         this.type = type;
+        this.receiverId = receiverId;
     }
 
 
@@ -154,5 +159,15 @@ public class TransactionEntity implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
+
+    public ReceiverEntity getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(ReceiverEntity receiverId) {
+        this.receiverId = receiverId;
+    }
+    
+    
 
 }

@@ -3,6 +3,7 @@ package co.api.trescubos.dto;
 import co.api.trescubos.entities.CurrencyEntity;
 import co.api.trescubos.entities.EnterpriseUserEntity;
 import co.api.trescubos.entities.TransactionEntity;
+import co.api.trescubos.entities.ReceiverEntity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,7 @@ public class TransactionDTO {
     private Double previousBalance;
     private Double newBalance;
     private String type;
+    private ReceiverEntity receiverId;
     
     
     public TransactionDTO() {
@@ -43,6 +45,7 @@ public class TransactionDTO {
         this.previousBalance = transactionEntity.getPreviousBalance();
         this.newBalance = transactionEntity.getNewBalance();
         this.type = transactionEntity.getType();
+        this.receiverId = transactionEntity.getReceiverId();
     }
     
     /**
@@ -155,6 +158,14 @@ public class TransactionDTO {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public ReceiverEntity getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(ReceiverEntity receiverId) {
+        this.receiverId = receiverId;
     }
 
     
