@@ -35,8 +35,17 @@ public class EnterpriseDTO {
      */
     public EnterpriseDTO(EnterpriseEntity enterpriseEntity) {
         this.id = enterpriseEntity.getId();
-        
+        this.identificationType = enterpriseEntity.getIdentificationType();
+        this.identificationNumber =  enterpriseEntity.getIdentificationNumber();
+        this.currencyId  = enterpriseEntity.getCurrencyId();
+        this.businessName  = enterpriseEntity.getBusinessName();
+        this.tradeName  = enterpriseEntity.getTradeName();
+        this.phone  = enterpriseEntity.getPhone();
+        this.address  = enterpriseEntity.getAddress();
+        this.city  = enterpriseEntity.getCity();
         this.countryId = enterpriseEntity.getCountryId();
+        this.dateCreated  = enterpriseEntity.getDateCreated();
+        this.dateUpdated  = enterpriseEntity.getDateUpdated();
     }
     
     /**

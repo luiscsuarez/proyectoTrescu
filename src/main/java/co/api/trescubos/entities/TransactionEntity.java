@@ -60,11 +60,15 @@ public class TransactionEntity implements Serializable {
     @JoinColumn(name = "receiver_id")
     @ManyToOne
     private ReceiverEntity receiverId;
+    
+    @JoinColumn(name = "brand_id")
+    @ManyToOne
+    private BrandEntity brandId;
 
     public TransactionEntity() {
     }
 
-    public TransactionEntity(Long id, EnterpriseUserEntity userId, Date dateCreated, Date dateUpdated, String description, Double amount, CurrencyEntity currencyId, Double previousBalance, Double newBalance, String type, ReceiverEntity receiverId) {
+    public TransactionEntity(Long id, EnterpriseUserEntity userId, Date dateCreated, Date dateUpdated, String description, Double amount, CurrencyEntity currencyId, Double previousBalance, Double newBalance, String type, ReceiverEntity receiverId, BrandEntity brandId) {
         this.id = id;
         this.userId = userId;
         this.dateCreated = dateCreated;
@@ -76,6 +80,7 @@ public class TransactionEntity implements Serializable {
         this.newBalance = newBalance;
         this.type = type;
         this.receiverId = receiverId;
+        this.brandId = brandId;
     }
 
 
@@ -166,6 +171,14 @@ public class TransactionEntity implements Serializable {
 
     public void setReceiverId(ReceiverEntity receiverId) {
         this.receiverId = receiverId;
+    }
+
+    public BrandEntity getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(BrandEntity brandId) {
+        this.brandId = brandId;
     }
     
     

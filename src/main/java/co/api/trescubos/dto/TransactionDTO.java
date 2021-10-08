@@ -1,5 +1,6 @@
 package co.api.trescubos.dto;
 
+import co.api.trescubos.entities.BrandEntity;
 import co.api.trescubos.entities.CurrencyEntity;
 import co.api.trescubos.entities.EnterpriseUserEntity;
 import co.api.trescubos.entities.TransactionEntity;
@@ -25,6 +26,7 @@ public class TransactionDTO {
     private Double newBalance;
     private String type;
     private ReceiverEntity receiverId;
+    private BrandEntity brandId;
     
     
     public TransactionDTO() {
@@ -46,6 +48,7 @@ public class TransactionDTO {
         this.newBalance = transactionEntity.getNewBalance();
         this.type = transactionEntity.getType();
         this.receiverId = transactionEntity.getReceiverId();
+        this.brandId = transactionEntity.getBrandId();
     }
     
     /**
@@ -64,6 +67,8 @@ public class TransactionDTO {
         entity.setPreviousBalance(this.previousBalance);
         entity.setNewBalance(this.newBalance);
         entity.setType(this.type);
+        entity.setReceiverId(this.receiverId);
+        entity.setBrandId(this.brandId);
         return entity;
     }
     
@@ -166,6 +171,14 @@ public class TransactionDTO {
 
     public void setReceiverId(ReceiverEntity receiverId) {
         this.receiverId = receiverId;
+    }
+
+    public BrandEntity getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(BrandEntity brandId) {
+        this.brandId = brandId;
     }
 
     
