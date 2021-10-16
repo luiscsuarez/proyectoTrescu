@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.UUID;
+
 
 /**
  * EJB 
@@ -51,6 +53,7 @@ public class TransactionLogic {
     public TransactionEntity crearTransaction(TransactionEntity transactionCrear){
         transactionCrear.setDateCreated(Date.from(Instant.now()));
         transactionCrear.setDateUpdated(Date.from(Instant.now()));
+        transactionCrear.setToken("tx-"+UUID.randomUUID().toString());
         persistence.create(transactionCrear);
         return transactionCrear;
     }

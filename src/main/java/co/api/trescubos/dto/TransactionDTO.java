@@ -27,6 +27,7 @@ public class TransactionDTO {
     private String type;
     private ReceiverEntity receiverId;
     private BrandEntity brandId;
+    private String token;
     
     
     public TransactionDTO() {
@@ -49,6 +50,7 @@ public class TransactionDTO {
         this.type = transactionEntity.getType();
         this.receiverId = transactionEntity.getReceiverId();
         this.brandId = transactionEntity.getBrandId();
+        this.token = transactionEntity.getToken();
     }
     
     /**
@@ -69,6 +71,7 @@ public class TransactionDTO {
         entity.setType(this.type);
         entity.setReceiverId(this.receiverId);
         entity.setBrandId(this.brandId);
+        entity.setToken(this.token);
         return entity;
     }
     
@@ -179,6 +182,14 @@ public class TransactionDTO {
 
     public void setBrandId(BrandEntity brandId) {
         this.brandId = brandId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     
