@@ -22,10 +22,10 @@ public class QuartzListener extends QuartzInitializerListener {
         StdSchedulerFactory factory = (StdSchedulerFactory) ctx.getAttribute(QUARTZ_FACTORY_KEY);
         try {
             Scheduler scheduler = factory.getScheduler();
-            JobDetail jobDetail = JobBuilder.newJob(ExampleJob.class).build();
+            JobDetail jobDetail = JobBuilder.newJob(JobFind.class).build();
             Trigger trigger = TriggerBuilder.newTrigger().withIdentity("simple").withSchedule(
-                    //"0 0/1 * 1/1 * ? *"
-                    CronScheduleBuilder.cronSchedule("0 45 8-21 * * ? *")).startNow().build();
+                    //Para ejecutar cada hora en punto entre las 8 y las 21horas  "0 0 8-21 * * ? *"
+                    CronScheduleBuilder.cronSchedule("0 * 8-21 * * ? *")).startNow().build();
             scheduler.scheduleJob(jobDetail, trigger);
             scheduler.start();
         } catch (Exception e) {

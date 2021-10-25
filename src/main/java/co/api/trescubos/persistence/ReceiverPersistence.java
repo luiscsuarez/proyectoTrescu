@@ -29,6 +29,12 @@ public class ReceiverPersistence {
         return queryReceiver.getResultList();
     }
     
+    public List<ReceiverEntity> findByHour(){
+        System.out.println("Se esta ejecutando persistencia");
+        Query queryReceiver = entityManager.createQuery("select p from receivers p WHERE extract (hour from p.date_shipping ) = extract (hour from now())");
+        return queryReceiver.getResultList();
+    }
+    
     /**
      * Metodo que busca un objeto mediante su id
      * @param id

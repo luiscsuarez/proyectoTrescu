@@ -28,6 +28,16 @@ public class ReceiverLogic {
         return receivers;
     }
     
+    
+    /**
+     * Obtener todos los objetos
+     * @return 
+     */
+    public List<ReceiverEntity> obtenerReceiversHora(){
+        System.out.println("Se ejecuta cvapa logica");
+        List<ReceiverEntity> receivers = persistence.findByHour();
+        return receivers;
+    }
     /**
      * Obtener por su id
      * @param id
