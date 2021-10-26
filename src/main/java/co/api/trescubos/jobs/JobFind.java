@@ -10,8 +10,13 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
+/**
+ * Job especifico que se debe ejecutar
+ *
+ * @author luissuarez
+ */
 public class JobFind implements Job {
-    
+
     @EJB
     private ReceiverLogic receiversLogic;
     List<ReceiverEntity> receivers;
@@ -22,6 +27,6 @@ public class JobFind implements Job {
         System.out.println("Esto es la ejecucucion del Job a las: " + new Timestamp(System.currentTimeMillis()));
         receiversLogic.obtenerReceiversHora();
         receivers = receiversLogic.obtenerReceiversHora();
-        System.out.println("Receptores: "+ReceiverDTO.toReceiverList(receivers));
+        System.out.println("Receptores: " + ReceiverDTO.toReceiverList(receivers));
     }
 }

@@ -12,6 +12,11 @@ import org.quartz.TriggerBuilder;
 import org.quartz.ee.servlet.QuartzInitializerListener;
 import org.quartz.impl.StdSchedulerFactory;
 
+/**
+ * Agendamiento y disparo del job a ejecutar
+ *
+ * @author luissuarez
+ */
 @WebListener
 public class QuartzListener extends QuartzInitializerListener {
 
