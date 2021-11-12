@@ -30,7 +30,7 @@ public class QuartzListener extends QuartzInitializerListener {
             JobDetail jobDetail = JobBuilder.newJob(JobFind.class).build();
             Trigger trigger = TriggerBuilder.newTrigger().withIdentity("simple").withSchedule(
                     //Para ejecutar cada hora en punto entre las 8 y las 21horas  "0 0 8-21 * * ? *"
-                    CronScheduleBuilder.cronSchedule("0 * 8-21 * * ? *")).startNow().build();
+                    CronScheduleBuilder.cronSchedule("0 0 8-21 * * ? *")).startNow().build();
             scheduler.scheduleJob(jobDetail, trigger);
             scheduler.start();
         } catch (Exception e) {
